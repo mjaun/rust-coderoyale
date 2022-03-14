@@ -73,7 +73,7 @@ impl Context {
             .min()
     }
 
-    fn closest_site<P>(&self, predicate: P) -> Option<&Site> where P: Fn(&Site) -> bool {
+    fn closest_site(&self, predicate: impl Fn(&Site) -> bool) -> Option<&Site> {
         let reference_point = self.friendly_queen().position;
 
         self.sites.iter()
